@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,13 +21,19 @@ public class AppController {
     private UserService userService;
 
     @GetMapping("find/age/{age}")
-    public List<User> findByAge(@PathVariable Integer age){
+    public List<User> findByAge(@PathVariable Integer age) {
 
         return userService.findByAge(age);
     }
 
     @GetMapping("find/hobbies/{hobbies}")
-    public Page<User> findByHobbies(@PathVariable String hobbies){
-        return userService.findByHobbies(hobbies,0,10);
+    public Page<User> findByHobbies(@PathVariable String hobbies) {
+        return userService.findByHobbies(hobbies, 0, 10);
+    }
+
+
+    @PostMapping("add/{name}/{age}/{interest}/{hobbies}")
+    public User add(@PathVariable String name, @PathVariable Integer age, @PathVariable String interest, @PathVariable String hobbies) {
+        return userService.save(name, age, interest, hobbies);
     }
 }

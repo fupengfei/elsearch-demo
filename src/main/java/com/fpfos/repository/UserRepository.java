@@ -17,5 +17,4 @@ public interface UserRepository extends ElasticsearchRepository<User, String> {
     Page<User> findByHobbies(String Hobbies, Pageable pageable);
 
     List<User> findByAge(Integer age);
-
 }

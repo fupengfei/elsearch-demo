@@ -14,4 +14,6 @@ public interface UserService {
     List<User> findByAge(Integer age);
 
     Page<User> findByHobbies(String hobbies, Integer pageNo, Integer pageNumber);
+
+    User save(String name,Integer age, String interest, String hobbies);
 }
